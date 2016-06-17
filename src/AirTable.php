@@ -175,9 +175,9 @@ class AirTable
 
         $data = json_decode($response->getContent(), true);
 
-        return array_map(function (array $data) {
-            return new Record($data["id"], $data["fields"]);
-        }, $data);
+        return array_map(function (array $value) {
+            return new Record($value["id"], $value["fields"]);
+        }, $data["records"]);
     }
 
     protected function getEndpoint($table, $id = null)
