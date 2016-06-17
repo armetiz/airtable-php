@@ -6,7 +6,7 @@
     "require": {
         "php": ">=5.5.0",
         "kriswallsmith/buzz": "^0.15.0",
-        "beberlei/assert": "^2.5"
+        "beberlei/assert": "~2.1.0"
     },
     "license": "MIT",
     "autoload": {
