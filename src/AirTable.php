@@ -62,7 +62,7 @@ class AirTable
 
         $this->guardResponse($table, $response);
     }
-    
+
     public function updateRecord($table, array $criteria = [], array $fields)
     {
         $record = $this->findRecord($table, $criteria);
@@ -151,34 +151,33 @@ class AirTable
      */
     public function findRecords($table, array $criteria = [])
     {
+        $url = $this->getEndpoint($table);
+
+        if (count($criteria) > 0) {
+            $formulas = [];
+            foreach ($criteria as $field => $value) {
+                $formulas[] = sprintf("%s='%s'", $field, $value);
+            }
+
+            $url .= sprintf(
+                "?filterByFormula=(%s)",
+                join(" AND ", $formulas)
+            );
+        }
+
         /** @var Response $response */
         $response = $this->browser->get(
-            $this->getEndpoint($table),
+            $url,
             [
                 "content-type" => "application/json",
             ]
         );
 
-        $data         = json_decode($response->getContent(), true);
-        $dataFiltered = array_filter($data["records"], function (array $record) use ($criteria) {
-            $fields = $record["fields"];
+        $data = json_decode($response->getContent(), true);
 
-            foreach ($criteria as $field => $value) {
-                if (!isset($fields[$field])) {
-                    return false;
-                }
-
-                if ($value !== $fields[$field]) {
-                    return false;
-                }
-            }
-
-            return true;
-        });
-
-        return array_map(function(array $data) {
+        return array_map(function (array $data) {
             return new Record($data["id"], $data["fields"]);
-        }, $dataFiltered);
+        }, $data);
     }
 
     protected function getEndpoint($table, $id = null)
