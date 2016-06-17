@@ -1,7 +1,10 @@
 {
     "name": "armetiz/airtable-php",
     "description": "Manipulate AirTable API using PHP",
+    "keywords": ["php", "airtable", "sdk"],
+    "homepage": "https://github.com/armetiz/airtable-php",
     "require": {
+        "php": ">=5.5.0",
         "kriswallsmith/buzz": "^0.15.0",
         "beberlei/assert": "^2.5"
     },
@@ -14,7 +17,8 @@
     "authors": [
         {
             "name": "Thomas Tourlourat",
-            "email": "thomas@tourlourat.com"
+            "email": "thomas@tourlourat.com",
+            "homepage": "http://www.wozbe.com"
         }
     ]
 }
