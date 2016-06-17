@@ -1,0 +1,20 @@
+{
+    "name": "armetiz/airtable-php",
+    "description": "Manipulate AirTable API using PHP",
+    "require": {
+        "kriswallsmith/buzz": "^0.15.0",
+        "beberlei/assert": "^2.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Armetiz\\AirTableSDK\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Thomas Tourlourat",
+            "email": "thomas@tourlourat.com"
+        }
+    ]
+}
