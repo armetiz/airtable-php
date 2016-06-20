@@ -1,11 +1,11 @@
-# AirTable for PHP
+# Airtable for PHP
 
 ## Example
 
-Simple member indexer that encapsulate AirTable within simple API.
-Can be used to start a CRM on AirTable.
+Simple member indexer that encapsulate Airtable within simple API.
+Can be used to start a CRM on Airtable.
 
-Note: Because AirTable doesn't allow schema manipulation using their public API, you should configure table using the WebUI with the following
+Note: Because Airtable doesn't allow schema manipulation using their public API, you should configure table using the WebUI with the following
 
 * Id : text
 * Firstname : text
@@ -20,37 +20,37 @@ $key   = "APP_KEY"; // Generated from : https://airtable.com/account
 $base  = "BASE_ID"; // Find it on : https://airtable.com/api
 $table = "TABLE_NAME"; // Find it on : https://airtable.com/api
 
-$airTable    = new AirTable($key, $base);
-$indexMember = new MemberIndex($airTable, $table);
+$airtable    = new Airtable($key, $base);
+$indexMember = new MemberIndex($airtable, $table);
 ```
 
 ```php
-use Armetiz\AirTableSDK\AirTable;
+use Armetiz\AirtableSDK\Airtable;
 
 class MemberIndex
 {
     /**
-     * @var AirTable
+     * @var Airtable
      */
-    private $airTable;
+    private $airtable;
 
     private $table;
 
     /**
      * MemberIndexer constructor.
      *
-     * @param AirTable $airTable
+     * @param Airtable $airtable
      * @param          $table
      */
-    public function __construct(AirTable $airTable, $table)
+    public function __construct(Airtable $airtable, $table)
     {
-        $this->airTable = $airTable;
+        $this->airtable = $airtable;
         $this->table    = $table;
     }
 
     public function clear()
     {
-        $this->airTable->flushRecords($this->table);
+        $this->airtable->flushRecords($this->table);
     }
 
     public function save(array $data)
@@ -72,16 +72,16 @@ class MemberIndex
             ];
         }
 
-        if ($this->airTable->containsRecord($this->table, $criteria)) {
-            $this->airTable->updateRecord($this->table, $criteria, $fields);
+        if ($this->airtable->containsRecord($this->table, $criteria)) {
+            $this->airtable->updateRecord($this->table, $criteria, $fields);
         } else {
-            $this->airTable->createRecord($this->table, $fields);
+            $this->airtable->createRecord($this->table, $fields);
         }
     }
 
     public function delete($id)
     {
-        $this->airTable->deleteRecord($this->table, ["Id" => $id]);
+        $this->airtable->deleteRecord($this->table, ["Id" => $id]);
     }
 
     private function guardData(array $data)

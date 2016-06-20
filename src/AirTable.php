@@ -1,6 +1,6 @@
 <?php
 
-namespace Armetiz\AirTableSDK;
+namespace Armetiz\AirtableSDK;
 
 use Assert\Assertion;
 use Buzz;
@@ -9,7 +9,7 @@ use Buzz\Message\Response;
 /**
  * @author : Thomas Tourlourat <thomas@tourlourat.com>
  */
-class AirTable
+class Airtable
 {
     /**
      * @var Buzz\Browser
@@ -22,7 +22,7 @@ class AirTable
     private $base;
 
     /**
-     * AirTable constructor.
+     * Airtable constructor.
      *
      * @param string $accessToken
      * @param string $base
@@ -144,6 +144,8 @@ class AirTable
     }
 
     /**
+     * TODO - Be able to loop over multiple pages. 
+     * 
      * @param       $table
      * @param array $criteria
      *

@@ -6,7 +6,7 @@
  * Time: 10:00
  */
 
-namespace Armetiz\AirTableSDK;
+namespace Armetiz\AirtableSDK;
 
 
 class Record

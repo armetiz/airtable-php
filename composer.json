@@ -1,6 +1,6 @@
 {
     "name": "armetiz/airtable-php",
-    "description": "Manipulate AirTable API using PHP",
+    "description": "Manipulate Airtable API using PHP",
     "keywords": ["php", "airtable", "sdk"],
     "homepage": "https://github.com/armetiz/airtable-php",
     "require": {
@@ -11,7 +11,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Armetiz\\AirTableSDK\\": "src/"
+            "Armetiz\\AirtableSDK\\": "src/"
         }
     },
     "authors": [
