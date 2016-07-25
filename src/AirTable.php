@@ -63,12 +63,44 @@ class Airtable
         $this->guardResponse($table, $response);
     }
 
-    public function updateRecord($table, array $criteria = [], array $fields)
+    /**
+     * This will update all fields of a table record, issuing a PUT request to the record endpoint. Any fields that are not included will be cleared ().
+     *
+     * @param string $table
+     * @param array  $criteria
+     * @param array  $fields
+     */
+    public function setRecord($table, array $criteria = [], array $fields)
     {
         $record = $this->findRecord($table, $criteria);
 
         /** @var Response $response */
         $response = $this->browser->put(
+            $this->getEndpoint($table, $record->getId()),
+            [
+                "content-type" => "application/json",
+            ],
+            json_encode([
+                "fields" => $fields,
+            ])
+        );
+
+        $this->guardResponse($table, $response);
+    }
+
+    /**
+     * This will update some (but not all) fields of a table record, issuing a PATCH request to the record endpoint. Any fields that are not included will not be updated.
+     *
+     * @param string $table
+     * @param array  $criteria
+     * @param array  $fields
+     */
+    public function updateRecord($table, array $criteria = [], array $fields)
+    {
+        $record = $this->findRecord($table, $criteria);
+
+        /** @var Response $response */
+        $response = $this->browser->patch(
             $this->getEndpoint($table, $record->getId()),
             [
                 "content-type" => "application/json",
