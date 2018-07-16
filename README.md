@@ -1,5 +1,23 @@
 # Airtable for PHP
 
+## Require airtable-php
+
+Tell composer to require this bundle by running:
+
+``` bash
+composer require armetiz/airtable-php
+```
+
+## Use the SDK
+
+```php
+$key   = "APP_KEY"; // Generated from : https://airtable.com/account
+$base  = "BASE_ID"; // Find it on : https://airtable.com/api
+$table = "TABLE_NAME"; // Find it on : https://airtable.com/api
+
+$airtable = new Airtable($key, $base);
+```
+
 ## Example
 
 Simple member indexer that encapsulate Airtable within simple API.
