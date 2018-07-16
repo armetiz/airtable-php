@@ -20,6 +20,17 @@ $airtable = new Airtable($key, $base);
 $records = $airtable->findRecords($table);
 ```
 
+**Available methods**
+
+* Airtable::createRecord($table, array $fields)
+* Airtable::setRecord($table, array $criteria = [], array $fields)
+* Airtable::updateRecord($table, array $criteria = [], array $fields)
+* Airtable::containsRecord($table, array $criteria = [])
+* Airtable::flushRecords($table)
+* Airtable::deleteRecord($table, array $criteria = [])
+* Airtable::findRecord($table, array $criteria = [])
+* Airtable::findRecords($table, array $criteria = [])
+
 ## Example
 
 Simple member indexer that encapsulate Airtable within simple API.
