@@ -16,6 +16,8 @@ $base  = "BASE_ID"; // Find it on : https://airtable.com/api
 $table = "TABLE_NAME"; // Find it on : https://airtable.com/api
 
 $airtable = new Airtable($key, $base);
+
+$records = $airtable->findRecords($table);
 ```
 
 ## Example
@@ -38,8 +40,9 @@ $key   = "APP_KEY"; // Generated from : https://airtable.com/account
 $base  = "BASE_ID"; // Find it on : https://airtable.com/api
 $table = "TABLE_NAME"; // Find it on : https://airtable.com/api
 
-$airtable    = new Airtable($key, $base);
-$indexMember = new MemberIndex($airtable, $table);
+$airtable = new Airtable($key, $base);
+
+$records = $airtable->findRecords($table);
 ```
 
 ```php
