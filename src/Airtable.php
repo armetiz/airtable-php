@@ -151,6 +151,23 @@ class Airtable
         $this->guardResponse($table, $response);
     }
 
+    public function getRecord($table, $id)
+    {
+        $url = $this->getEndpoint($table, $id);
+
+        /** @var Response $response */
+        $response = $this->browser->get(
+            $url,
+            [
+                "content-type" => "application/json",
+            ]
+        );
+
+        $data = json_decode($response->getContent(), true);
+
+        return new Record($data["id"], $data["fields"]);
+    }
+
     /**
      * @param       $table
      * @param array $criteria
