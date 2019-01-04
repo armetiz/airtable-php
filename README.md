@@ -22,14 +22,15 @@ $records = $airtable->findRecords($table);
 
 **Available methods**
 
-* Airtable::createRecord($table, array $fields)
-* Airtable::setRecord($table, array $criteria = [], array $fields)
-* Airtable::updateRecord($table, array $criteria = [], array $fields)
-* Airtable::containsRecord($table, array $criteria = [])
-* Airtable::flushRecords($table)
-* Airtable::deleteRecord($table, array $criteria = [])
-* Airtable::findRecord($table, array $criteria = [])
-* Airtable::findRecords($table, array $criteria = [])
+* Airtable::getRecord(string $table, string $id)
+* Airtable::createRecord(string $table, array $fields)
+* Airtable::setRecord(string $table, array $criteria = [], array $fields)
+* Airtable::updateRecord(string $table, array $criteria = [], array $fields)
+* Airtable::containsRecord(string $table, array $criteria = [])
+* Airtable::flushRecords(string $table)
+* Airtable::deleteRecord(string $table, array $criteria = [])
+* Airtable::findRecord(string $table, array $criteria = [])
+* Airtable::findRecords(string $table, array $criteria = [])
 
 ## Example
 

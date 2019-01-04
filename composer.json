@@ -4,7 +4,8 @@
     "keywords": ["php", "airtable", "sdk"],
     "homepage": "https://github.com/armetiz/airtable-php",
     "require": {
-        "php": ">=5.5.0",
+        "ext-json": "*",
+        "php": ">=7.1",
         "kriswallsmith/buzz": "^0.15.0",
         "beberlei/assert": "~2.1"
     },
