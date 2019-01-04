@@ -1,6 +1,8 @@
 # Airtable for PHP
 
-## Require airtable-php
+Basic SDK to deal with airtable records.
+
+## Installation
 
 Tell composer to require this bundle by running:
 
@@ -8,7 +10,7 @@ Tell composer to require this bundle by running:
 composer require armetiz/airtable-php
 ```
 
-## Use the SDK
+## Usage
 
 ```php
 $key   = "APP_KEY"; // Generated from : https://airtable.com/account
