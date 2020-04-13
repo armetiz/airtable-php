@@ -24,6 +24,7 @@ $records = $airtable->findRecords($table);
 
 **Available methods**
 
+* Airtable::createTableManipulator(string $table): TableManipulator
 * Airtable::getRecord(string $table, string $id)
 * Airtable::createRecord(string $table, array $fields)
 * Airtable::setRecord(string $table, array $criteria = [], array $fields)
@@ -60,38 +61,24 @@ $records = $airtable->findRecords($table);
 ```
 
 ```php
-use Armetiz\AirtableSDK\Airtable;
+use Armetiz\AirtableSDK\Airtable as AirtableClient;
 
 class MemberIndex
 {
-    /**
-     * @var Airtable
-     */
     private $airtable;
 
-    private $table;
-
-    /**
-     * MemberIndexer constructor.
-     *
-     * @param Airtable $airtable
-     * @param          $table
-     */
-    public function __construct(Airtable $airtable, $table)
+    public function __construct(AirtableClient $airtableClient, string $table)
     {
-        $this->airtable = $airtable;
-        $this->table    = $table;
+        $this->airtable = $airtableClient->createTableManipulator($table);
     }
 
     public function clear()
     {
-        $this->airtable->flushRecords($this->table);
+        $this->airtable->flushRecords();
     }
 
     public function save(array $data)
     {
-        $this->guardData($data);
-
         $criteria = ["Id" => $data["id"]];
         $fields   = [
             "Id"                    => $data["id"],
@@ -101,44 +88,16 @@ class MemberIndex
             "CreatedAt"             => (string)$data["createdAt"],
         ];
 
-        if ($data["picture"]) {
-            $record["Picture"] = [
-                ["url" => $data["picture"]],
-            ];
-        }
-
-        if ($this->airtable->containsRecord($this->table, $criteria)) {
-            $this->airtable->updateRecord($this->table, $criteria, $fields);
+        if ($this->airtable->containsRecord($criteria)) {
+            $this->airtable->updateRecord($criteria, $fields);
         } else {
-            $this->airtable->createRecord($this->table, $fields);
+            $this->airtable->createRecord($fields);
         }
     }
 
     public function delete($id)
     {
-        $this->airtable->deleteRecord($this->table, ["Id" => $id]);
-    }
-
-    private function guardData(array $data)
-    {
-        $requiredKeys = [
-            "id",
-            "firstName",
-            "lastName",
-            "email",
-            "picture",
-            "createdAt",
-        ];
-
-        $availableKeys = array_keys($data);
-        foreach ($requiredKeys as $requiredKey) {
-            if (!in_array($requiredKey, $availableKeys)) {
-                throw new \InvalidArgumentException(sprintf(
-                    "Required keys '%s' from data is missing",
-                    $requiredKey
-                ));
-            }
-        }
+        $this->airtable->deleteRecord(["Id" => $id]);
     }
 }
 ```

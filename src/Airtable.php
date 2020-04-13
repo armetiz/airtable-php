@@ -32,6 +32,11 @@ class Airtable
         $this->base = $base;
     }
 
+    public function createTableManipulator(string $table): TableManipulator
+    {
+        return new TableManipulator($this, $table);
+    }
+
     public function createRecord(string $table, array $fields): void
     {
         /** @var Response $response */
