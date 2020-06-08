@@ -229,7 +229,7 @@ class Airtable
 
             return strtr($urlPattern, [
                 '%BASE%'  => $this->base,
-                '%TABLE%' => $table,
+                '%TABLE%' => rawurlencode($table),
                 '%ID%'    => $id,
             ]);
         }
@@ -238,7 +238,7 @@ class Airtable
 
         return strtr($urlPattern, [
             '%BASE%'  => $this->base,
-            '%TABLE%' => $table,
+            '%TABLE%' => rawurlencode($table),
         ]);
     }
 
