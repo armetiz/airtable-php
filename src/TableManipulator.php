@@ -19,12 +19,12 @@ class TableManipulator
         $this->client->createRecord($this->table, $fields);
     }
 
-    public function setRecord(array $criteria = [], array $fields): void
+    public function setRecord(array $criteria, array $fields): void
     {
         $this->client->setRecord($this->table, $criteria, $fields);
     }
 
-    public function updateRecord(array $criteria = [], array $fields): void
+    public function updateRecord(array $criteria, array $fields): void
     {
         $this->client->updateRecord($this->table, $criteria, $fields);
     }
@@ -54,7 +54,7 @@ class TableManipulator
         return $this->client->findRecord($this->table, $criteria);
     }
 
-    public function findRecords(string $table, array $criteria = []): array
+    public function findRecords(array $criteria = []): array
     {
         return $this->client->findRecords($this->table, $criteria);
     }

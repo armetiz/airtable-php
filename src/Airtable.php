@@ -62,7 +62,7 @@ class Airtable
      *
      * @throws \Assert\AssertionFailedException
      */
-    public function setRecord(string $table, array $criteria = [], array $fields): void
+    public function setRecord(string $table, array $criteria, array $fields): void
     {
         $record = $this->findRecord($table, $criteria);
 
@@ -91,7 +91,7 @@ class Airtable
      *
      * @throws \Assert\AssertionFailedException
      */
-    public function updateRecord(string $table, array $criteria = [], array $fields): void
+    public function updateRecord(string $table, array $criteria, array $fields): void
     {
         $record = $this->findRecord($table, $criteria);
 
@@ -111,7 +111,7 @@ class Airtable
         $this->guardResponse($table, $response);
     }
 
-    public function containsRecord(string $table, array $criteria = []): bool
+    public function containsRecord(string $table, array $criteria): bool
     {
         return $this->findRecord($table, $criteria) !== null;
     }
@@ -134,7 +134,7 @@ class Airtable
         }
     }
 
-    public function deleteRecord(string $table, array $criteria = []): void
+    public function deleteRecord(string $table, array $criteria): void
     {
         $record = $this->findRecord($table, $criteria);
 
@@ -168,7 +168,7 @@ class Airtable
         return new Record($data['id'], $data['fields']);
     }
 
-    public function findRecord(string $table, array $criteria = []): ?Record
+    public function findRecord(string $table, array $criteria): ?Record
     {
         $records = $this->findRecords($table, $criteria);
 
@@ -191,7 +191,7 @@ class Airtable
      * 
      * @return Record[]
      */
-    public function findRecords(string $table, array $criteria = []): array
+    public function findRecords(string $table, array $criteria): array
     {
         $url = $this->getEndpoint($table);
 
