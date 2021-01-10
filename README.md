@@ -33,7 +33,7 @@ $records = $airtable->findRecords($table);
 * Airtable::flushRecords(string $table)
 * Airtable::deleteRecord(string $table, array $criteria = [])
 * Airtable::findRecord(string $table, array $criteria = [])
-* Airtable::findRecords(string $table, array $criteria = [])
+* Airtable::findRecords(string $table, array $criteria = [], string $view = null)
 
 ## Example
 
