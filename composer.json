@@ -1,8 +1,8 @@
 {
     "name": "ryanh7g/airtable-php",
-    "description": "Manipulate Airtable API using PHP",
+    "description": "Airtable API with Support for View Attr",
     "keywords": ["php", "airtable", "sdk"],
-    "homepage": "https://github.com/armetiz/airtable-php",
+    "homepage": "https://github.com/ryanh7g/airtable-php",
     "require": {
         "ext-json": "*",
         "php": ">=7.1",
