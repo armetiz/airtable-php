@@ -1,5 +1,5 @@
 {
-    "name": "armetiz/airtable-php",
+    "name": "ryanh7g/airtable-php",
     "description": "Manipulate Airtable API using PHP",
     "keywords": ["php", "airtable", "sdk"],
     "homepage": "https://github.com/armetiz/airtable-php",
@@ -20,6 +20,10 @@
             "name": "Thomas Tourlourat",
             "email": "thomas@tourlourat.com",
             "homepage": "http://www.wozbe.com"
+        },
+        {
+            "name": "Ryan Hildebrant",
+            "email": "ryanh@sevengables.com"
         }
     ]
 }
