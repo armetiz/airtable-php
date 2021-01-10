@@ -112,4 +112,4 @@ This library is under the MIT license. [See the complete license](https://github
 
 ## Credits
 
-Author - [Thomas Tourlourat](http://www.wozbe.com)
+Original Author - [Thomas Tourlourat](http://www.wozbe.com)
