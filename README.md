@@ -7,7 +7,7 @@ Basic SDK to deal with airtable records.
 Tell composer to require this bundle by running:
 
 ``` bash
-composer require armetiz/airtable-php
+composer require ryanh7g/airtable-php
 ```
 
 ## Usage
