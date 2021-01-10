@@ -191,10 +191,11 @@ class Airtable
      * 
      * @return Record[]
      */
-    public function findRecords(string $table, array $criteria): array
+    public function findRecords(string $table, array $criteria = [], string $view = null): array
     {
         $url = $this->getEndpoint($table);
-
+        $url .= "?";
+        
         if (count($criteria) > 0) {
             $formulas = [];
             foreach ($criteria as $field => $value) {
@@ -202,10 +203,14 @@ class Airtable
             }
 
             $url .= sprintf(
-                '?filterByFormula=(%s)',
+                '&filterByFormula=(%s)',
                 implode(' AND ', $formulas)
             );
         }
+        
+         if ($view) {
+        	$url .= '&view=' . rawurlencode($view);
+         }
 
         /** @var Response $response */
         $response = $this->browser->get(
