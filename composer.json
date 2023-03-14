@@ -6,7 +6,7 @@
     "require": {
         "ext-json": "*",
         "php": ">=7.1",
-        "kriswallsmith/buzz": "^0.15.0",
+        "kriswallsmith/buzz": "^1.2.0",
         "beberlei/assert": "~2.1"
     },
     "license": "MIT",
